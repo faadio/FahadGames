@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FahadGames</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: white;
+}
+
+/* ================= NAVBAR ================= */
+
+nav {
+    height: 70px;
+    background: #0d111a;
+    border-bottom: 1px solid #252b38;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #8b5cf6;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.search {
+    background: #171d29;
+    border: 1px solid #303747;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background:
+        radial-gradient(circle at 80% 40%, #4c1d95, transparent 35%),
+        #080b12;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    background: #7c3aed;
+    padding: 7px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #aeb5c2;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.main-button {
+    background: #7c3aed;
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-button:hover {
+    background: #9333ea;
+}
+
+/* ================= MAIN ================= */
+
+main {
+    padding: 50px 7%;
+}
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+}
+
+.categories {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 55px;
+}
+
+.category {
+    background: #111722;
+    border: 1px solid #293142;
+    padding: 11px 18px;
+    border-radius: 25px;
+    color: #bbb;
+    cursor: pointer;
+}
+
+.category:hover {
+    background: #7c3aed;
+    color: white;
+}
+
+/* ================= GAME CARDS ================= */
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.game-card {
+    background: #111722;
+    border: 1px solid #202938;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: .25s;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    border-color: #7c3aed;
+    box-shadow: 0 10px 30px rgba(124,58,237,.2);
+}
+
+.game-image {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    background: linear-gradient(135deg,#1e1b4b,#312e81);
+}
+
+.game-info {
+    padding: 18px;
+}
+
+.game-info h3 {
+    margin-bottom: 8px;
+}
+
+.game-info p {
+    color: #8e97a7;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.game-button {
+    width: 100%;
+    padding: 11px;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.game-button:hover {
+    background: #7c3aed;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 40px;
+    padding: 30px;
+    text-align: center;
+    color: #777;
+    background: #0d111a;
+    border-top: 1px solid #202735;
+}
+
+/* ================= CLICK GAME ================= */
+
+#clickGame {
+    display: none;
+    min-height: 100vh;
+    background: #080b12;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+#clickGame h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat {
+    background: #111722;
+    border: 1px solid #293142;
+    border-radius: 12px;
+    padding: 18px 35px;
+}
+
+.stat p {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.stat strong {
+    font-size: 30px;
+}
+
+#clickButton {
+    width: 280px;
+    height: 170px;
+    background: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#clickButton:hover {
+    background: #9333ea;
+}
+
+#clickButton:active {
+    transform: scale(.96);
+}
+
+#gameMessage {
+    margin-top: 25px;
+    color: #999;
+}
+
+/* ================= SNAKE GAME ================= */
+
+#snakeGame {
+    display: none;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 20%, #182a1d, transparent 45%),
+        #050807;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+#snakeGame h1 {
+    font-size: 45px;
+    margin-bottom: 8px;
+}
+
+.snake-description {
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+.snake-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.snake-stat {
+    background: rgba(17, 23, 25, .9);
+    border: 1px solid #26352a;
+    border-radius: 12px;
+    padding: 12px 30px;
+    min-width: 120px;
+}
+
+.snake-stat p {
+    color: #8b948d;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.snake-stat strong {
+    font-size: 25px;
+}
+
+/* GAME BOARD */
+
+#snakeCanvas {
+    width: 500px;
+    height: 500px;
+    max-width: 92vw;
+    max-height: 92vw;
+
+    border: 4px solid #26382b;
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 0 2px #101810,
+        0 15px 45px rgba(0,0,0,.65),
+        0 0 35px rgba(50,150,60,.12);
+
+    background: #152319;
+}
+
+/* MESSAGE */
+
+.snake-message {
+    margin-top: 18px;
+    color: #a7b0a8;
+    min-height: 20px;
+}
+
+/* BUTTONS */
+
+.restart-button {
+    margin-top: 18px;
+    background: #3d8b40;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.restart-button:hover {
+    background: #4ca850;
+}
+
+.back-button {
+    margin-top: 15px;
+    background: #1f2937;
+    color: white;
+    border: 1px solid #374151;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #374151;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .search {
+        width: 140px;
+    }
+
+    #snakeCanvas {
+        width: 92vw;
+        height: 92vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HOME PAGE
+===================================================== -->
+
+<div id="homePage">
+
+<nav>
+
+    <div class="logo">
+        Fahad<span>Games</span>
+    </div>
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#categories">Categories</a></li>
+    </ul>
+
+    <input
+        class="search"
+        type="text"
+        placeholder="Search games..."
+    >
+
+</nav>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🎮 PLAY FOR FREE
+        </div>
+
+        <h1>
+            Welcome to FahadGames
+        </h1>
+
+        <p>
+            Play fun browser games directly from your website.
+            No downloads. No installations. Just play.
+        </p>
+
+        <button
+            class="main-button"
+            onclick="startSnakeGame()"
+        >
+            Play Snake 🐍
+        </button>
+
+    </div>
+
+</section>
+
+
+<main>
+
+    <div
+        id="categories"
+        class="section-title"
+    >
+        <h2>Categories</h2>
+    </div>
+
+
+    <div class="categories">
+
+        <div class="category">
+            🔥 Popular
+        </div>
+
+        <div class="category">
+            🧠 Puzzle
+        </div>
+
+        <div class="category">
+            ⚡ Arcade
+        </div>
+
+        <div class="category">
+            🏆 Challenge
+        </div>
+
+    </div>
+
+
+    <div
+        id="games"
+        class="section-title"
+    >
+        <h2>Featured Games</h2>
+    </div>
+
+
+    <div class="games">
+
+        <!-- CLICK CHALLENGE -->
+
+        <div class="game-card">
+
+            <div class="game-image">
+                🎯
+            </div>
+
+            <div class="game-info">
+
+                <h3>
+                    Click Challenge
+                </h3>
+
+                <p>
+                    Click as fast as possible in 10 seconds!
+                </p>
+
+                <button
+                    class="game-button"
+                    onclick="startClickGame()"
+                >
+                    Play Game
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- REALISTIC SNAKE -->
+
+        <div class="game-card">
+
+            <div class="game-image">
+                🐍
+            </div>
+
+            <div class="game-info">
+
+                <h3>
+                    Snake
+                </h3>
+
+                <p>
+                    Eat apples and grow your snake!
+                </p>
+
+                <button
+                    class="game-button"
+                    onclick="startSnakeGame()"
+                >
+                    Play Game
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ROCK PAPER SCISSORS -->
+
+        <div class="game-card">
+
+            <div class="game-image">
+                ✊
+            </div>
+
+            <div class="game-info">
+
+                <h3>
+                    Rock Paper Scissors
+                </h3>
+
+                <p>
+                    Challenge the computer.
+                </p>
+
+                <button
+                    class="game-button"
+                    onclick="comingSoon('Rock Paper Scissors')"
+                >
+                    Play Game
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PUZZLE -->
+
+        <div class="game-card">
+
+            <div class="game-image">
+                🧩
+            </div>
+
+            <div class="game-info">
+
+                <h3>
+                    Puzzle Master
+                </h3>
+
+                <p>
+                    Test your brain with puzzles.
+                </p>
+
+                <button
+                    class="game-button"
+                    onclick="comingSoon('Puzzle Master')"
+                >
+                    Play Game
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 FahadGames — Play. Have Fun. 🎮
+</footer>
+
+</div>
+
+
+<!-- =====================================================
+     CLICK CHALLENGE
+===================================================== -->
+
+<div id="clickGame">
+
+    <h1>
+        🎯 Click Challenge
+    </h1>
+
+    <p class="description">
+        Click the button as many times as possible in 10 seconds!
+    </p>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <p>SCORE</p>
+
+            <strong id="score">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <p>TIME</p>
+
+            <strong id="time">
+                10
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="clickButton"
+        onclick="makeClick()"
+    >
+        CLICK ME!
+    </button>
+
+
+    <p id="gameMessage">
+        Get ready!
+    </p>
+
+
+    <button
+        class="back-button"
+        onclick="goHome()"
+    >
+        ← Back to Games
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     REALISTIC SNAKE
+===================================================== -->
+
+<div id="snakeGame">
+
+    <h1>
+        🐍 Snake
+    </h1>
+
+    <p class="snake-description">
+        Use Arrow Keys or WASD to control the snake.
+    </p>
+
+
+    <div class="snake-stats">
+
+        <div class="snake-stat">
+
+            <p>SCORE</p>
+
+            <strong id="snakeScore">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="snake-stat">
+
+            <p>HIGH SCORE</p>
+
+            <strong id="snakeHighScore">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <canvas
+        id="snakeCanvas"
+        width="500"
+        height="500"
+    ></canvas>
+
+
+    <p
+        id="snakeMessage"
+        class="snake-message"
+    >
+        Press an arrow key or WASD to start!
+    </p>
+
+
+    <button
+        class="restart-button"
+        onclick="startSnakeGame()"
+    >
+        🔄 Restart Game
+    </button>
+
+
+    <button
+        class="back-button"
+        onclick="goHome()"
+    >
+        ← Back to Games
+    </button>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CLICK CHALLENGE
+===================================================== */
+
+let score = 0;
+let timeLeft = 10;
+let timer = null;
+let playing = false;
+
+
+function startClickGame() {
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("snakeGame").style.display = "none";
+
+    document.getElementById("clickGame").style.display = "flex";
+
+
+    score = 0;
+    timeLeft = 10;
+    playing = true;
+
+
+    document.getElementById("score").textContent = "0";
+
+    document.getElementById("time").textContent = "10";
+
+    document.getElementById("clickButton").textContent =
+        "CLICK ME!";
+
+    document.getElementById("gameMessage").textContent =
+        "Click as fast as you can! 🔥";
+
+
+    clearInterval(timer);
+
+
+    timer = setInterval(function() {
+
+        timeLeft--;
+
+        document.getElementById("time").textContent =
+            timeLeft;
+
+
+        if (timeLeft <= 0) {
+
+            endGame();
+
+        }
+
+    }, 1000);
+}
+
+
+function makeClick() {
+
+    if (!playing) return;
+
+    score++;
+
+    document.getElementById("score").textContent =
+        score;
+}
+
+
+function endGame() {
+
+    clearInterval(timer);
+
+    playing = false;
+
+
+    document.getElementById("clickButton").textContent =
+        "GAME OVER";
+
+
+    document.getElementById("gameMessage").innerHTML =
+        "<strong>Your score: " +
+        score +
+        "</strong><br><br>" +
+        getScoreMessage();
+}
+
+
+function getScoreMessage() {
+
+    if (score < 10)
+        return "Keep practicing! 💪";
+
+    if (score < 25)
+        return "Nice score! 🔥";
+
+    if (score < 40)
+        return "Great job! ⚡";
+
+    return "Amazing! You're a clicking machine! 🏆";
+}
+
+
+/* =====================================================
+   REALISTIC SNAKE GAME
+===================================================== */
+
+const canvas =
+    document.getElementById("snakeCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+
+const gridSize = 25;
+
+const tileCount =
+    canvas.width / gridSize;
+
+
+let snake = [];
+
+let food = {
+    x: 15,
+    y: 10
+};
+
+
+let snakeDirection = {
+    x: 1,
+    y: 0
+};
+
+
+let nextDirection = {
+    x: 1,
+    y: 0
+};
+
+
+let snakeScore = 0;
+
+let snakeGameRunning = false;
+
+let snakeTimer = null;
+
+
+let snakeHighScore =
+    Number(
+        localStorage.getItem(
+            "fahadSnakeHighScore"
+        )
+    ) || 0;
+
+
+document.getElementById(
+    "snakeHighScore"
+).textContent = snakeHighScore;
+
+
+/* =====================================================
+   START SNAKE
+===================================================== */
+
+function startSnakeGame() {
+
+    document.getElementById(
+        "homePage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "clickGame"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "snakeGame"
+    ).style.display = "flex";
+
+
+    clearInterval(timer);
+
+    clearInterval(snakeTimer);
+
+
+    snake = [
+
+        {
+            x: 10,
+            y: 10
+        },
+
+        {
+            x: 9,
+            y: 10
+        },
+
+        {
+            x: 8,
+            y: 10
+        },
+
+        {
+            x: 7,
+            y: 10
+        }
+
+    ];
+
+
+    snakeDirection = {
+        x: 1,
+        y: 0
+    };
+
+
+    nextDirection = {
+        x: 1,
+        y: 0
+    };
+
+
+    snakeScore = 0;
+
+
+    document.getElementById(
+        "snakeScore"
+    ).textContent = "0";
+
+
+    document.getElementById(
+        "snakeMessage"
+    ).textContent =
+        "Use Arrow Keys or WASD to move!";
+
+
+    createFood();
+
+
+    snakeGameRunning = true;
+
+
+    drawSnake();
+
+
+    snakeTimer =
+        setInterval(
+            updateSnake,
+            115
+        );
+}
+
+
+/* =====================================================
+   CREATE FOOD
+===================================================== */
+
+function createFood() {
+
+    let validPosition = false;
+
+
+    while (!validPosition) {
+
+        food = {
+
+            x: Math.floor(
+                Math.random() * tileCount
+            ),
+
+            y: Math.floor(
+                Math.random() * tileCount
+            )
+
+        };
+
+
+        validPosition = true;
+
+
+        for (let segment of snake) {
+
+            if (
+                segment.x === food.x &&
+                segment.y === food.y
+            ) {
+
+                validPosition = false;
+
+                break;
+            }
+
+        }
+    }
+}
+
+
+/* =====================================================
+   UPDATE SNAKE
+===================================================== */
+
+function updateSnake() {
+
+    if (!snakeGameRunning) return;
+
+
+    snakeDirection =
+        nextDirection;
+
+
+    const head = {
+
+        x:
+            snake[0].x +
+            snakeDirection.x,
+
+        y:
+            snake[0].y +
+            snakeDirection.y
+
+    };
+
+
+    /* WALL COLLISION */
+
+    if (
+
+        head.x < 0 ||
+
+        head.x >= tileCount ||
+
+        head.y < 0 ||
+
+        head.y >= tileCount
+
+    ) {
+
+        snakeGameOver();
+
+        return;
+    }
+
+
+    /* SELF COLLISION */
+
+    for (
+        let i = 0;
+        i < snake.length;
+        i++
+    ) {
+
+        if (
+
+            head.x === snake[i].x &&
+
+            head.y === snake[i].y
+
+        ) {
+
+            snakeGameOver();
+
+            return;
+        }
+    }
+
+
+    snake.unshift(head);
+
+
+    /* EAT APPLE */
+
+    if (
+
+        head.x === food.x &&
+
+        head.y === food.y
+
+    ) {
+
+        snakeScore++;
+
+
+        document.getElementById(
+            "snakeScore"
+        ).textContent =
+            snakeScore;
+
+
+        if (
+            snakeScore >
+            snakeHighScore
+        ) {
+
+            snakeHighScore =
+                snakeScore;
+
+
+            localStorage.setItem(
+                "fahadSnakeHighScore",
+                snakeHighScore
+            );
+
+
+            document.getElementById(
+                "snakeHighScore"
+            ).textContent =
+                snakeHighScore;
+        }
+
+
+        createFood();
+
+    }
+
+    else {
+
+        snake.pop();
+
+    }
+
+
+    drawSnake();
+}
+
+
+/* =====================================================
+   DRAW BACKGROUND
+===================================================== */
+
+function drawBackground() {
+
+    /* GRASS */
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            canvas.height
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#1a2b1b"
+    );
+
+
+    gradient.addColorStop(
+        1,
+        "#0d180f"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* SMALL GRASS TEXTURES */
+
+    ctx.strokeStyle =
+        "rgba(100,150,80,0.10)";
+
+    ctx.lineWidth = 1;
+
+
+    for (
+        let x = 5;
+        x < canvas.width;
+        x += 18
+    ) {
+
+        for (
+            let y = 8;
+            y < canvas.height;
+            y += 20
+        ) {
+
+            ctx.beginPath();
+
+            ctx.moveTo(x, y + 4);
+
+            ctx.lineTo(
+                x + 2,
+                y
+            );
+
+            ctx.stroke();
+
+        }
+    }
+
+
+    /* SUBTLE GRID */
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,0.025)";
+
+    for (
+        let x = 0;
+        x <= canvas.width;
+        x += gridSize
+    ) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(x, 0);
+
+        ctx.lineTo(
+            x,
+            canvas.height
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    for (
+        let y = 0;
+        y <= canvas.height;
+        y += gridSize
+    ) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, y);
+
+        ctx.lineTo(
+            canvas.width,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+}
+
+
+/* =====================================================
+   DRAW APPLE
+===================================================== */
+
+function drawApple() {
+
+    const centerX =
+        food.x * gridSize +
+        gridSize / 2;
+
+    const centerY =
+        food.y * gridSize +
+        gridSize / 2;
+
+
+    /* SHADOW */
+
+    ctx.fillStyle =
+        "rgba(0,0,0,.35)";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX,
+        centerY + 8,
+        9,
+        4,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* APPLE BODY */
+
+    const appleGradient =
+        ctx.createRadialGradient(
+            centerX - 4,
+            centerY - 5,
+            2,
+            centerX,
+            centerY,
+            12
+        );
+
+
+    appleGradient.addColorStop(
+        0,
+        "#ff7777"
+    );
+
+    appleGradient.addColorStop(
+        0.4,
+        "#e52e2e"
+    );
+
+    appleGradient.addColorStop(
+        1,
+        "#8f1111"
+    );
+
+
+    ctx.fillStyle =
+        appleGradient;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        centerX - 5,
+        centerY,
+        7,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.arc(
+        centerX + 5,
+        centerY,
+        7,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* STEM */
+
+    ctx.strokeStyle =
+        "#4a2a14";
+
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        centerX,
+        centerY - 7
+    );
+
+    ctx.lineTo(
+        centerX + 2,
+        centerY - 12
+    );
+
+    ctx.stroke();
+
+
+    /* LEAF */
+
+    ctx.fillStyle =
+        "#4f9d45";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX + 5,
+        centerY - 10,
+        5,
+        2.5,
+        -0.5,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* HIGHLIGHT */
+
+    ctx.fillStyle =
+        "rgba(255,255,255,.65)";
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        centerX - 6,
+        centerY - 5,
+        2,
+        3,
+        -0.4,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+
+
+/* =====================================================
+   DRAW REALISTIC SNAKE
+===================================================== */
+
+function drawSnake() {
+
+    drawBackground();
+
+
+    /* APPLE */
+
+    drawApple();
+
+
+    /* SNAKE SHADOW */
+
+    for (
+        let i = snake.length - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const segment =
+            snake[i];
+
+
+        const centerX =
+            segment.x *
+            gridSize +
+            gridSize / 2;
+
+
+        const centerY =
+            segment.y *
+            gridSize +
+            gridSize / 2;
+
+
+        ctx.fillStyle =
+            "rgba(0,0,0,.35)";
+
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            centerX + 2,
+            centerY + 5,
+            11,
+            6,
+            0,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+
+
+    /* BODY */
+
+    for (
+        let i = snake.length - 1;
+        i >= 1;
+        i--
+    ) {
+
+        const segment =
+            snake[i];
+
+
+        const centerX =
+            segment.x *
+            gridSize +
+            gridSize / 2;
+
+
+        const centerY =
+            segment.y *
+            gridSize +
+            gridSize / 2;
+
+
+        /* BODY GRADIENT */
+
+        const bodyGradient =
+            ctx.createRadialGradient(
+                centerX - 5,
+                centerY - 6,
+                2,
+                centerX,
+                centerY,
+                14
+            );
+
+
+        bodyGradient.addColorStop(
+            0,
+            "#79c267"
+        );
+
+        bodyGradient.addColorStop(
+            0.45,
+            "#3d8b40"
+        );
+
+        bodyGradient.addColorStop(
+            1,
+            "#173b1c"
+        );
+
+
+        ctx.fillStyle =
+            bodyGradient;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            centerX,
+            centerY,
+            11.5,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+
+        /* SCALES */
+
+        ctx.fillStyle =
+            "rgba(170,220,130,.25)";
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            centerX - 4,
+            centerY - 3,
+            2,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.arc(
+            centerX + 2,
+            centerY + 1,
+            2,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.arc(
+            centerX - 1,
+            centerY + 5,
+            2,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+
+        /* BODY SHINE */
+
+        ctx.strokeStyle =
+            "rgba(200,255,180,.20)";
+
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            centerX - 3,
+            centerY - 3,
+            7,
+            3.5,
+            5.2
+        );
+
+        ctx.stroke();
+    }
+
+
+    /* HEAD */
+
+    drawSnakeHead();
+}
+
+
+/* =====================================================
+   DRAW SNAKE HEAD
+===================================================== */
+
+function drawSnakeHead() {
+
+    const head =
+        snake[0];
+
+
+    const centerX =
+        head.x *
+        gridSize +
+        gridSize / 2;
+
+
+    const centerY =
+        head.y *
+        gridSize +
+        gridSize / 2;
+
+
+    /* HEAD DIRECTION */
+
+    let angle =
+        Math.atan2(
+            snakeDirection.y,
+            snakeDirection.x
+        );
+
+
+    ctx.save();
+
+    ctx.translate(
+        centerX,
+        centerY
+    );
+
+    ctx.rotate(angle);
+
+
+    /* HEAD SHADOW */
+
+    ctx.fillStyle =
+        "rgba(0,0,0,.4)";
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        2,
+        4,
+        15,
+        12,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* HEAD GRADIENT */
+
+    const headGradient =
+        ctx.createRadialGradient(
+            -5,
+            -6,
+            2,
+            0,
+            0,
+            18
+        );
+
+
+    headGradient.addColorStop(
+        0,
+        "#91d878"
+    );
+
+    headGradient.addColorStop(
+        0.45,
+        "#4f9f4e"
+    );
+
+    headGradient.addColorStop(
+        1,
+        "#173b1c"
+    );
+
+
+    ctx.fillStyle =
+        headGradient;
+
+
+    /* HEAD SHAPE */
+
+    ctx.beginPath();
+
+    ctx.moveTo(15, 0);
+
+    ctx.bezierCurveTo(
+        11,
+        -12,
+        0,
+        -15,
+        -9,
+        -10
+    );
+
+    ctx.bezierCurveTo(
+        -15,
+        -6,
+        -15,
+        6,
+        -9,
+        10
+    );
+
+    ctx.bezierCurveTo(
+        0,
+        15,
+        11,
+        12,
+        15,
+        0
+    );
+
+    ctx.fill();
+
+
+    /* EYES */
+
+    drawSnakeEye(
+        4,
+        -7
+    );
+
+    drawSnakeEye(
+        4,
+        7
+    );
+
+
+    /* NOSE */
+
+    ctx.fillStyle =
+        "#111";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        13,
+        -4,
+        1.5,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.arc(
+        13,
+        4,
+        1.5,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* TONGUE */
+
+    if (Math.floor(Date.now() / 300) % 2 === 0) {
+
+        ctx.strokeStyle =
+            "#d95772";
+
+        ctx.lineWidth = 1.5;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            14,
+            0
+        );
+
+        ctx.lineTo(
+            21,
+            0
+        );
+
+        ctx.lineTo(
+            25,
+            -3
+        );
+
+        ctx.moveTo(
+            21,
+            0
+        );
+
+        ctx.lineTo(
+            25,
+            3
+        );
+
+        ctx.stroke();
+    }
+
+
+    /* HEAD SCALE PATTERN */
+
+    ctx.strokeStyle =
+        "rgba(220,255,200,.18)";
+
+    ctx.lineWidth = 1;
+
+    for (
+        let i = -1;
+        i <= 1;
+        i++
+    ) {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            -2,
+            i * 5,
+            6,
+            0.5,
+            2.4
+        );
+
+        ctx.stroke();
+    }
+
+
+    ctx.restore();
+}
+
+
+/* =====================================================
+   SNAKE EYES
+===================================================== */
+
+function drawSnakeEye(
+    x,
+    y
+) {
+
+    /* WHITE */
+
+    ctx.fillStyle =
+        "#f5f5f5";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x,
+        y,
+        4,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* PUPIL */
+
+    ctx.fillStyle =
+        "#050505";
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        x + 1,
+        y,
+        1.5,
+        3,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /* EYE SHINE */
+
+    ctx.fillStyle =
+        "white";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x - 1,
+        y - 1.5,
+        .8,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+}
+
+
+/* =====================================================
+   GAME OVER
+===================================================== */
+
+function snakeGameOver() {
+
+    snakeGameRunning = false;
+
+    clearInterval(snakeTimer);
+
+
+    document.getElementById(
+        "snakeMessage"
+    ).innerHTML =
+        "<strong>Game Over!</strong> Your score: " +
+        snakeScore +
+        " — Press Restart to play again.";
+
+
+    drawSnake();
+
+
+    /* DARK OVERLAY */
+
+    ctx.fillStyle =
+        "rgba(0,0,0,.62)";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* GAME OVER */
+
+    ctx.fillStyle =
+        "white";
+
+    ctx.font =
+        "bold 42px Arial";
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.fillText(
+        "GAME OVER",
+        canvas.width / 2,
+        canvas.height / 2 - 15
+    );
+
+
+    ctx.font =
+        "20px Arial";
+
+
+    ctx.fillText(
+        "Score: " + snakeScore,
+        canvas.width / 2,
+        canvas.height / 2 + 25
+    );
+}
+
+
+/* =====================================================
+   KEYBOARD CONTROLS
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const key =
+            event.key.toLowerCase();
+
+
+        if (
+            key === "arrowup" ||
+            key === "w"
+        ) {
+
+            if (
+                snakeDirection.y !== 1
+            ) {
+
+                nextDirection = {
+                    x: 0,
+                    y: -1
+                };
+            }
+        }
+
+
+        else if (
+            key === "arrowdown" ||
+            key === "s"
+        ) {
+
+            if (
+                snakeDirection.y !== -1
+            ) {
+
+                nextDirection = {
+                    x: 0,
+                    y: 1
+                };
+            }
+        }
+
+
+        else if (
+            key === "arrowleft" ||
+            key === "a"
+        ) {
+
+            if (
+                snakeDirection.x !== 1
+            ) {
+
+                nextDirection = {
+                    x: -1,
+                    y: 0
+                };
+            }
+        }
+
+
+        else if (
+            key === "arrowright" ||
+            key === "d"
+        ) {
+
+            if (
+                snakeDirection.x !== -1
+            ) {
+
+                nextDirection = {
+                    x: 1,
+                    y: 0
+                };
+            }
+        }
+
+
+        if (
+            snakeGameRunning &&
+            [
+                "arrowup",
+                "arrowdown",
+                "arrowleft",
+                "arrowright",
+                "w",
+                "a",
+                "s",
+                "d"
+            ].includes(key)
+        ) {
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   GO HOME
+===================================================== */
+
+function goHome() {
+
+    clearInterval(timer);
+
+    clearInterval(snakeTimer);
+
+
+    playing = false;
+
+    snakeGameRunning = false;
+
+
+    document.getElementById(
+        "clickGame"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "snakeGame"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "homePage"
+    ).style.display = "block";
+}
+
+
+/* =====================================================
+   COMING SOON
+===================================================== */
+
+function comingSoon(gameName) {
+
+    alert(
+        gameName +
+        " will be added soon! 🎮"
+    );
+}
+
+</script>
+
+</body>
+</html>
